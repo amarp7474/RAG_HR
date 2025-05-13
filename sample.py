@@ -7,7 +7,11 @@ from langchain_community.vectorstores import FAISS
 from langchain.indexes import VectorstoreIndexCreator
 from langchain_aws import BedrockLLM
 import boto3
-
+ession = boto3.Session(
+    aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
+    aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"],
+    region_name=os.environ["AWS_DEFAULT_REGION"]
+)
 
 client = session.client(service_name='bedrock-runtime')
 
